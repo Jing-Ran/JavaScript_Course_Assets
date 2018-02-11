@@ -16,6 +16,35 @@ export class Application {
           1.404351 });
       this.addVehicleMarkers(this.fleetManager.fleet);
       this.infoWindow = this.map.addInfoWindow;
+
+      // Exe 1: add "Vans with Fridge" btn
+      if (this.fleetManager.filterByFeature('refrigerated').length > 0) {
+        this.uiManager.addButton('buttons', 'Vans with Fridge', [{
+          name: 'click',
+          handler: () => {
+            if (this.map) {
+              this.removeVehicleMarkers();
+              this.addVehicleMarkers(this.fleetManager.filterByFeature(
+                'refrigerated'));
+            }
+          }
+        }]);
+      }
+
+      // Exe 1: add "Motors with Secure Doc Storage" btn
+      if (this.fleetManager.filterByFeature('secureDocumentStorage').length >
+        0) {
+        this.uiManager.addButton('buttons', 'Motors with Secure Doc Storage', [{
+          name: 'click',
+          handler: () => {
+            if (this.map) {
+              this.removeVehicleMarkers();
+              this.addVehicleMarkers(this.fleetManager.filterByFeature(
+                'secureDocumentStorage'));
+            }
+          }
+        }]);
+      }
     });
 
     this.uiManager = new UiManager();
