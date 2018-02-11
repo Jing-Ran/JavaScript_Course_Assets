@@ -3,15 +3,15 @@ import { GoogleMap } from './google-map.js';
 import { Button } from './button.js';
 
 export class UiManager {
-    addTitle(containerId, text) {
-        new Title(containerId, text);
-    }
+  addTitle(containerId, text) {
+    new Title(containerId, text);
+  }
 
-    addMap(containerId, centerLatLng) {
-        return new GoogleMap(containerId, centerLatLng);
-    }
+  addMap(containerId, centerLatLng) {
+    return new GoogleMap(containerId, centerLatLng);
+  }
 
-    addButton(containerId, text, handlers) {
-        new Button(containerId, text, handlers);
-    }
+  addButton(containerId, text, handlers) {
+    new Button(containerId, text, handlers);
+  }
 }

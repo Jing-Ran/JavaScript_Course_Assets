@@ -1,5 +1,5 @@
 ﻿export class StatusReport {
-    constructor() {
-        this.status = 'Setup working';
-    }
+  constructor() {
+    this.status = 'Setup working';
+  }
 }
