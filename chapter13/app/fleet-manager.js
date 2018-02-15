@@ -1,5 +1,6 @@
 ﻿import { Motorbike } from './vehicles/motorbike.js';
 import { Van } from './vehicles/van.js';
+import { Flight } from './vehicles/flight.js';
 
 export class FleetManager {
   constructor(fleetData) {
@@ -14,6 +15,10 @@ export class FleetManager {
       vans: (vehicle) => {
         this.fleet.push(new Van(vehicle.license, vehicle.capacity,
           vehicle.location, (vehicle.refrigerated || undefined)));
+      },
+      flights: (vehicle) => {
+        this.fleet.push(new Flight(vehicle.license, vehicle.capacity,
+          vehicle.location, (vehicle.international || undefined)));
       }
     };
 

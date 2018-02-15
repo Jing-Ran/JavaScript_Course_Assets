@@ -71,6 +71,17 @@ export class Application {
         }
       }
     }]);
+    // Exe 4
+    this.uiManager.addButton('buttons', 'Show Flights', [{
+      name: 'click',
+      handler: () => {
+        if (this.map) {
+          this.removeVehicleMarkers();
+          this.addVehicleMarkers(this.fleetManager.filterByType(
+            'flight'));
+        }
+      }
+    }]);
     this.uiManager.addButton('buttons', 'Show all', [{
       name: 'click',
       handler: () => {
@@ -128,6 +139,8 @@ export class Application {
         `<p><strong>Secure document storage</strong>&nbsp;<span class="pull-right glyphicon glyphicon-ok"></span></p>`;
       if (vehicle.refrigerated) template +=
         `<p><strong>Refrigerated</strong>&nbsp;<span class="pull-right glyphicon glyphicon-ok"></span></p>`;
+      if (vehicle.international) template +=
+        `<p><strong>International</strong>&nbsp;<span class="pull-right glyphicon glyphicon-ok"></span></p>`;
 
       marker.addListener('click', () => {
         // console.log(template);

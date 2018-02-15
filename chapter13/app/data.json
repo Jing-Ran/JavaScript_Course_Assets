@@ -133,5 +133,22 @@
       "lat": 50.936519,
       "lng": -1.417065
     }
+  }],
+  "flights": [{
+    "license": "N904DE",
+    "capacity": "8400ft2",
+    "international": true,
+    "location": {
+      "lat": 50.899832,
+      "lng": -1.4157065
+    }
+  }, {
+    "license": "JA8089",
+    "capacity": "3800ft2",
+    "location": {
+      "lat": 50.916519,
+      "lng": -1.477065
+    }
   }]
+
 }
