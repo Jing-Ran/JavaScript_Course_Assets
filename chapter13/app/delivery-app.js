@@ -93,7 +93,11 @@ export class Application {
     }]);
 
     // Exe 2: add select
-    this.uiManager.addSelect('selection', [{
+    this.uiManager.addSelect('selection', 
+      {
+        id: 'cap-select'
+      }, 
+      [{
       name: 'change',
       handler: (e) => {
         if (this.map && e.target.value) {

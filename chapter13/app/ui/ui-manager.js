@@ -19,8 +19,8 @@ export class UiManager {
   }
 
   // Exe 2
-  addSelect(containerId, handlers) {
-    new Select(containerId, handlers);
+  addSelect(containerId, attributes, handlers) {
+    new Select(containerId, attributes, handlers);
   }
 
   addOption(containerId, text, disabled, selected) {

@@ -2,11 +2,9 @@
 import { Element } from './element.js';
 
 export class Select extends Element {
-  constructor(containerId, handlers) {
+  constructor(containerId, attributes, handlers) {
     super('select', {
-      attributes: {
-        id: 'cap-select'
-      },
+      attributes,
       handlers
     });
 
