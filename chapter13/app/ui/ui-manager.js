@@ -31,4 +31,20 @@ export class UiManager {
   addTextInput(containerId, attributes, handlers) {
     new TextInput(containerId, attributes, handlers);
   }
+
+  // Exe 5: buttons is an array of all buttons to create, 
+  // each button is an obj that contains properties: text, vehicles()
+  createButtons(containerId, app, buttons) {
+    buttons.forEach(button => {
+      this.addButton(containerId, button.text, [{
+        name: 'click',
+        handler: () => {
+          if (app.map) {
+            app.removeVehicleMarkers();
+            app.addVehicleMarkers(button.vehicles());
+          }
+        }
+      }]);
+    });
+  }
 }

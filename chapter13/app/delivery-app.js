@@ -17,80 +17,59 @@ export class Application {
       this.addVehicleMarkers(this.fleetManager.fleet);
       this.infoWindow = this.map.addInfoWindow();
 
-      // Exe 1: add "Vans with Fridge" btn
-      if (this.fleetManager.filterByFeature('refrigerated').length > 0) {
-        this.uiManager.addButton('buttons', 'Vans with Fridge', [{
-          name: 'click',
-          handler: () => {
-            if (this.map) {
-              this.removeVehicleMarkers();
-              this.addVehicleMarkers(this.fleetManager.filterByFeature(
-                'refrigerated'));
-            }
-          }
-        }]);
-      }
-
-      // Exe 1: add "Motors with Secure Doc Storage" btn
-      if (this.fleetManager.filterByFeature('secureDocumentStorage').length >
-        0) {
-        this.uiManager.addButton('buttons', 'Motors with Secure Doc Storage', [{
-          name: 'click',
-          handler: () => {
-            if (this.map) {
-              this.removeVehicleMarkers();
-              this.addVehicleMarkers(this.fleetManager.filterByFeature(
-                'secureDocumentStorage'));
-            }
-          }
-        }]);
-      }
-
       // Exe 2: add options
       this.addOptsToSelect(this.getCapacity(this.fleetManager.fleet));
     });
 
     this.uiManager = new UiManager();
     this.uiManager.addTitle('titleContainer', this.name);
-    this.uiManager.addButton('buttons', 'Show Motorcycles', [{
-      name: 'click',
-      handler: () => {
-        if (this.map) {
-          this.removeVehicleMarkers();
-          this.addVehicleMarkers(this.fleetManager.filterByType(
-            'motorbike'));
+
+    // Exe 5: refactor file
+    this.uiManager.createButtons('buttons', this, [
+      {
+        text: 'Show Motorcycles',
+        vehicles: () => {
+          return this.fleetManager.filterByType('motorbike');
+        }
+      },
+      {
+        text: 'Show Vans',
+        vehicles: () => {
+          return this.fleetManager.filterByType('van');
+        }
+      },
+      {
+        text: 'Show Flights',
+        vehicles: () => {
+          return this.fleetManager.filterByType('flight');
+        }
+      },
+      {
+        text: 'Show All',
+        vehicles: () => {
+          return this.fleetManager.fleet;
+        }
+      },
+      {
+        text: 'Vans with Fridge',
+        vehicles: () => {
+          return this.fleetManager.filterByFeature('refrigerated');
+        }
+      },
+      {
+        text: 'Motors with Secure Doc Storage',
+        vehicles: () => {
+          return this.fleetManager.filterByFeature('secureDocumentStorage');
+        }
+      },
+      {
+        text: 'International Flights',
+        vehicles: () => {
+          return this.fleetManager.filterByFeature('international');
         }
       }
-    }]);
-    this.uiManager.addButton('buttons', 'Show Vans', [{
-      name: 'click',
-      handler: () => {
-        if (this.map) {
-          this.removeVehicleMarkers();
-          this.addVehicleMarkers(this.fleetManager.filterByType('van'));
-        }
-      }
-    }]);
-    // Exe 4
-    this.uiManager.addButton('buttons', 'Show Flights', [{
-      name: 'click',
-      handler: () => {
-        if (this.map) {
-          this.removeVehicleMarkers();
-          this.addVehicleMarkers(this.fleetManager.filterByType(
-            'flight'));
-        }
-      }
-    }]);
-    this.uiManager.addButton('buttons', 'Show all', [{
-      name: 'click',
-      handler: () => {
-        if (this.map) {
-          this.removeVehicleMarkers();
-          this.addVehicleMarkers(this.fleetManager.fleet);
-        }
-      }
-    }]);
+    ]);
+    
 
     // Exe 2: add select
     this.uiManager.addSelect('selection', 
@@ -126,7 +105,6 @@ export class Application {
         }
       }]
     );
-    
   }
 
   addVehicleMarkers(vehicles) {
